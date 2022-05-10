@@ -1,4 +1,4 @@
-# 백준 17073번 나무 위의 빗물 - 시간 초과
+# 백준 17073번 나무 위의 빗물
 
 import sys
 sys.stdin = open('input.txt')
