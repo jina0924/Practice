@@ -1,17 +1,16 @@
-# 백준 1992번 쿼드트리
+# 백준 1992번 쿼드트리 - x
 
 import sys
-sys.stdin = open('input1.txt')
+sys.stdin = open('input2.txt')
 
 
 def compress(r1, c1, r2, c2):
-    if r2 - r1 <= 1 and c2 - c1 <= 1:
-        return
     lt = data[r1][c1]
     rt = data[r1][c2]
     lb = data[r2][c1]
     rb = data[r2][c2]
     same = True
+    print('(', end='')
     for r in range(r1, (r1 + r2) // 2 + 1):
         for c in range(c1, (c1 + c2) // 2 + 1):
             if data[r][c] != lt:
@@ -19,7 +18,7 @@ def compress(r1, c1, r2, c2):
     if not same:
         compress(r1, c1, (r1 + r2) // 2, (c1 + c2) // 2)
     else:
-        print(f'({lt}', end='')
+        print(f'{lt}', end='')
     same = True
     for r in range(r1, (r1 + r2) // 2 + 1):
         for c in range((c1 + c2) // 2 + 1, c2 + 1):
@@ -30,7 +29,7 @@ def compress(r1, c1, r2, c2):
     else:
         print(f'{rt}', end='')
     same = True
-    for r in range((r1+ r2) // 2 + 1, r2 + 1):
+    for r in range((r1 + r2) // 2 + 1, r2 + 1):
         for c in range(c1, (c1 + c2) // 2 + 1):
             if data[r][c] != lb:
                 same = False
@@ -46,7 +45,8 @@ def compress(r1, c1, r2, c2):
     if not same:
         compress((r1 + r2) // 2 + 1, (c1 + c2) // 2 + 1, r2, c2)
     else:
-        print(f'{rb})', end='')
+        print(f'{rb}', end='')
+    print(')', end='')
 
 
 N = int(input())
