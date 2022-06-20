@@ -1,4 +1,4 @@
-# 백준 4803번 트리 - 시간초과
+# 백준 4803번 트리 - 시간초과 -> pypy3 통과
 
 import sys
 sys.stdin = open('input.txt')
@@ -31,8 +31,8 @@ while True:
             union(a, b)
     for i in range(1, v+1):
         p[i] = find_set(i)
-        if i in cycle:
-            cycle.add(p[i])
+        # if i in cycle:
+        #     cycle.add(p[i])
     tc += 1
     T = len(set(p) - cycle)
     if not T:
