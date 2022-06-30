@@ -1,4 +1,4 @@
-# 백준 1937번 욕심쟁이 판다 - x
+ # 백준 1937번 욕심쟁이 판다 - x
 
 import sys
 sys.stdin = open('input.txt')
