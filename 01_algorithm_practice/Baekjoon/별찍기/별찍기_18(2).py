@@ -10,18 +10,18 @@ def star(n, start):
     hh, ww = size[n][0], size[n][1]         # hh, ww: n일 때 삼각형 가로, 세로 길이
     m = (w - 1) // 2                        # board의 가운데
     r = start
-    k = i = 0                               # 별 간격을 위한 변수
+    k = 0                                   # 별 간격을 위한 변수
     if n % 2:
-        while hh > 1:
+        while hh > 1:                       # 삼각형 밑변을 제외한 모서리 그리기
             board[r][m-k] = board[r][m+k] = '*'
             r += 1
             k += 1
             hh -= 1
         board[r][m] = '*'
-        while i <= ww // 2:
-            board[r][m-i] = board[r][m+i] = '*'
-            i += 1
-        star(n-1, r-1)
+        while k:                            # 삼각형 밑변 그리기
+            board[r][m-k] = board[r][m+k] = '*'
+            k -= 1
+        star(n-1, r-1)                      # 그 다음 삼각형의 한 변의 길이는 짝수 => 역삼각형 => 밑변 바로 위에서 시작
     if n % 2 == 0:
         while hh > 1:
             board[r][m-k] = board[r][m+k] = '*'
@@ -29,9 +29,9 @@ def star(n, start):
             k += 1
             hh -= 1
         board[r][m] = '*'
-        while i <= ww // 2:
-            board[r][m - i] = board[r][m + i] = '*'
-            i += 1
+        while k:
+            board[r][m - k] = board[r][m + k] = '*'
+            k -= 1
         star(n-1, r+1)
 
 
