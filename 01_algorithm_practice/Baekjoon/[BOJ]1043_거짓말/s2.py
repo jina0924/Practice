@@ -25,12 +25,12 @@ for num in range(M):
         if party[i] in already:
             already = already | set(party)
             break
-    for j in range(num):
+    data.append(party)
+    for j in range(num+1):
         for p in data[j]:
             if p in already:
                 already = already | set(data[j])
                 break
-    data.append(party)
 ans = 0
 for i in range(M):
     if not set(data[i]) & already:
