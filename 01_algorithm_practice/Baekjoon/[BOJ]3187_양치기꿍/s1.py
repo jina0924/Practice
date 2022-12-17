@@ -29,7 +29,7 @@ def bfs(r, c):
 
 
 R, C = map(int, input().split())
-data = [list(input().rstrip()) for _ in range(C)]
+data = [list(input().rstrip()) for _ in range(R)]
 total_v, total_k = 0, 0
 for r in range(R):
     for c in range(C):
