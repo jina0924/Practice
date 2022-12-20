@@ -10,7 +10,6 @@ def prim(v):
     heap = []
     heapq.heappush(heap, (0, v))
     dist = 0
-    visited = [0] * (N+1)
 
     while heap:
         w, v = heapq.heappop(heap)
@@ -25,20 +24,17 @@ def prim(v):
 
 N, M = map(int, input().split())
 univ = [0] + list(input().split())
-# more = '.'
-# if univ.count('M') > univ.count('W'):
-#     more = 'M'
-# else:
-#     more = 'W'
 graph = [[] * (N+1) for _ in range(N+1)]
 for _ in range(M):
     u, v, d = map(int, input().split())
     graph[u].append((v, d))
     graph[v].append((u, d))
+visited = [0] * (N+1)
 ans = 987987987
-# for i in range(1, len(univ)):
-#     result = prim(i)
 result = prim(1)
+if sum(visited) != N:
+    print(-1)
+    sys.exit()
 if ans > result:
     ans = result
 print(ans)
