@@ -7,25 +7,25 @@ sys.stdin = open('input3.txt')
 
 def wall(cnt, cr, cc):
     global ans
-    if cnt >= 3:
-        result = bfs()
-        if result > ans:
+    if cnt >= 3:                                # 벽을 세 개 이상 세웠다면
+        result = bfs()                          # 안전 영역의 크기 세러 감
+        if result > ans:                        # 이번에 구한 안전 영역의 크기가 최대값이라면 갱신
             ans = result
     else:
         for r in range(N):
             for c in range(M):
-                if data[r][c] == 0 and (r > cr or c >= cc):
-                    data[r][c] = 1
-                    wall(cnt + 1, r, c)
-                    data[r][c] = 0
+                if data[r][c] == 0 and (r > cr or c >= cc):     # 빈 칸이고 전에 살펴본 위치보다 전이 아니라면
+                    data[r][c] = 1                              # 벽 세우고
+                    wall(cnt + 1, r, c)                         # 현재 벽 개수에 + 1하기
+                    data[r][c] = 0                              # 벽 세운 것 초기화
 
 
 dr, dc = (-1, 1, 0, 0), (0, 0, -1, 1)
 
 
 def bfs():
-    lab = deepcopy(data)
-    queue = deepcopy(virus)
+    lab = deepcopy(data)                        # 현재 벽 세운 연구소 상태
+    queue = deepcopy(virus)                     # 바이러스 위치
 
     while queue:
         cr, cc = queue.pop(0)
@@ -44,15 +44,14 @@ def bfs():
     return total
 
 
-N, M = map(int, input().split())
-data = []
-virus = []
-# visited = [[0] * M for _ in range(N)]
-ans = 0
+N, M = map(int, input().split())                # N, M: 지도의 세로, 가로 크기
+data = []                                       # 연구소 지도
+virus = []                                      # 바이러스 위치 값
+ans = 0                                         # 안전 영역의 최대 크기 담을 배열
 for r in range(N):
     row = list(map(int, input().split()))
     for c in range(M):
-        if row[c] == 2:
+        if row[c] == 2:                         # 바이러스 위치 저장
             virus.append((r, c))
     data.append(row)
 wall(0, 0, 0)
