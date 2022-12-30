@@ -15,21 +15,21 @@ for _ in range(M):
         if a <= 0 or a != b:
             ans = '*'
             c, d = A[i] / A[i-1], A[i-1] / A[i-2]
-            if c <= 0 or c != d:
+            if c <= 0 or c != int(c) or c != d:
                 ans = '?'
     elif i == 1:
         a, b = A[2] - A[1], A[1] - A[0]
         if a <= 0 or a != b:
             ans = '*'
             c, d = A[2] / A[1], A[1] / A[0]
-            if c <= 0 or c != d:
+            if c <= 0 or c != int(c) or c != d:
                 ans = '?'
     elif i == N:
         a, b = A[i-1] - A[i-2], A[i-2] - A[i-3]
         if a <= 0 or a != b:
             ans = '*'
             c, d = A[i-1] / A[i-2], A[i-2] / A[i-3]
-            if c <= 0 or c != d:
+            if c <= 0 or c != int(c) or c != d:
                 ans = '?'
     print(ans)
 
