@@ -1,7 +1,7 @@
-# 백준 18111번 마인크래프트
+# 백준 18111번 마인크래프트 - x
 
 import sys
-sys.stdin = open('input1.txt')
+sys.stdin = open('input4.txt')
 
 
 def flatten(height):
@@ -15,14 +15,15 @@ def flatten(height):
                 block += ground[r][c] - height
             elif ground[r][c] < height:
                 cnt += height - ground[r][c]
-                if block <= 0:
+                if block < height - ground[r][c]:
                     isFlatten = False
                     flatten(height - 1)
                 else:
                     block -= height - ground[r][c]
-    if isFlatten and ans > cnt:
+    if isFlatten and ans >= cnt:
         ans = cnt
-        top = height
+        if top < height:
+            top = height
 
 
 N, M, B = map(int, input().split())
@@ -34,6 +35,7 @@ for r in range(N):
     total += sum(data)
     ground.append(data)
 total /= (N * M)
-flatten(round(total))
+flatten(int(total))
+flatten(int(total) + 1)
 print(ans, top)
 
