@@ -264,3 +264,4 @@ cython_debug/
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,django
 
 .idea
+.DS_Store
