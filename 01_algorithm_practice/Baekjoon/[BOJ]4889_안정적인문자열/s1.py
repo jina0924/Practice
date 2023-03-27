@@ -1,4 +1,4 @@
-# 백준 4889번 안정적인 문자열
+# 백준 4889번 안정적인 문자열 - 뭐가 틀렸는지 모르겠음
 
 import sys
 sys.stdin = open('input.txt')
@@ -23,11 +23,7 @@ while True:
                 else:
                     isOpen = False
             else:
-                if isOpen:
-                    cnt += 2
-                    isOpen = False
-                else:
-                    isOpen = True
+                isOpen = True
 
 
     print(f'{tc}. {cnt}')
