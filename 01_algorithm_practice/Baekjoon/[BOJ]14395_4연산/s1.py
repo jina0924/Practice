@@ -1,4 +1,4 @@
-# 백준 14395번 4연산 - 시간초
+# 백준 14395번 4연산 - 시간초과
 
 import sys
 sys.stdin = open('input.txt')
