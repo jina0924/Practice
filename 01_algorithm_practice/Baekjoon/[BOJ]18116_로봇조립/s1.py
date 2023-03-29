@@ -22,9 +22,11 @@ def union(x, y):
     if px < py:
         p[py] = px
         s[px] += s[py]
+        s[py] = 0
     else:
         p[px] = py
         s[py] += s[px]
+        s[px] = 0
 
 
 N = int(input())
@@ -33,7 +35,9 @@ s = [1] * 1000001
 for _ in range(N):
     direc = input().split()
     if direc[0] == 'I':
-        union(int(direc[1]), int(direc[2]))
+        a, b = int(direc[1]), int(direc[2])
+        if find_set(a) != find_set(b):          # 부모 노드가 같은 경우에도 union하면 s[a]에 불필요한 값 누적하게 됨
+            union(a, b)
     else:
         tmp = find_set(int(direc[1]))
         # print(p.count(tmp))   count 시간 오래걸림
